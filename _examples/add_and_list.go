@@ -4,20 +4,15 @@ import (
 	"fmt"
 
 	"github.com/buraksezer/consistent"
-	"github.com/cespare/xxhash"
 )
 
 type Member string
 
-func (m Member) String() string {
-	return string(m)
-}
+func (m Member) String() string { _ = "STUB: not implemented"; return "" }
 
 type hasher struct{}
 
-func (h hasher) Sum64(data []byte) uint64 {
-	return xxhash.Sum64(data)
-}
+func (h hasher) Sum64(data []byte) uint64 { _ = "STUB: not implemented"; return 0 }
 
 func main() {
 	members := []consistent.Member{}

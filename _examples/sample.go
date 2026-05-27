@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/buraksezer/consistent"
-	"github.com/cespare/xxhash"
 )
 
 // In your distributed system, you probably have a custom data type
@@ -13,16 +12,19 @@ import (
 type myMember string
 
 func (m myMember) String() string {
-	return string(m)
+	_ = "STUB: not implemented"
+
+	// consistent package doesn't provide a default hashing function.
+	// You should provide a proper one to distribute keys/members uniformly.
+	return ""
 }
 
-// consistent package doesn't provide a default hashing function.
-// You should provide a proper one to distribute keys/members uniformly.
 type hasher struct{}
 
 func (h hasher) Sum64(data []byte) uint64 {
+	_ = "STUB: not implemented"
 	// you should use a proper hash function for uniformity.
-	return xxhash.Sum64(data)
+	return 0
 }
 
 func main() {
